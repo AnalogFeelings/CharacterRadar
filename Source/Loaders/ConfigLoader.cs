@@ -65,7 +65,7 @@ namespace CharacterRadar.Loaders
                 new Color(0.58f, 0.2f, 0, 1), "The color of the Chalkles arrow.");
 
             ConfigEntry<Color> craftersColor = file.Bind("Colors", "CraftersColor",
-                new Color(0.76f, 0.76f, 0.76f, 1), "The color of the Chalkles arrow.");
+                new Color(0.76f, 0.76f, 0.76f, 1), "The color of the Arts and Crafters arrow.");
 
             ConfigEntry<Color> cumuloColor = file.Bind("Colors", "CumuloColor",
                 new Color(0.4f, 0.3f, 0.4f, 1), "The color of the Cloudy Copter arrow.");
