@@ -40,25 +40,36 @@ namespace CharacterRadar.Hooks
 		public static void AwakePostfix(NPC __instance)
 		{
 			Character character = __instance.Character;
-			Color color = ConfigLoader.Instance.CharacterColors[character];
+			Color color;
 
-			if ((int)character > (int)Character.DrReflex && ConfigLoader.Instance.UseHashColors.Value)
+			if ((int)character > (int)Character.DrReflex)
 			{
-				using (SHA256 sha = SHA256.Create())
+				if (ConfigLoader.Instance.UseHashColors.Value)
 				{
-					byte[] npcName = Encoding.UTF8.GetBytes(__instance.GetType().Name);
-					byte[] hash = sha.ComputeHash(npcName);
+					using (SHA256 sha = SHA256.Create())
+					{
+						byte[] npcName = Encoding.UTF8.GetBytes(__instance.GetType().Name);
+						byte[] hash = sha.ComputeHash(npcName);
 
-					int red = hash[4];
-					int green = hash[6];
-					int blue = hash[8];
+						int red = hash[4];
+						int green = hash[6];
+						int blue = hash[8];
 
-					red = Mathf.Clamp(red, 48, byte.MaxValue);
-					green = Mathf.Clamp(green, 48, byte.MaxValue);
-					blue = Mathf.Clamp(blue, 48, byte.MaxValue);
+						red = Mathf.Clamp(red, 48, byte.MaxValue);
+						green = Mathf.Clamp(green, 48, byte.MaxValue);
+						blue = Mathf.Clamp(blue, 48, byte.MaxValue);
 
-					color = new Color(red / 255f, green / 255f, blue / 255f);
+						color = new Color(red / 255f, green / 255f, blue / 255f);
+					}
 				}
+				else
+				{
+					color = ConfigLoader.Instance.CharacterColors[Character.Null];
+				}
+			}
+			else
+			{
+				color = ConfigLoader.Instance.CharacterColors[character];
 			}
 			
 			Singleton<BaseGameManager>.Instance.Ec.map.AddArrow(__instance.transform, color);
