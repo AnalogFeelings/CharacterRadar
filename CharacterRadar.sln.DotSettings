@@ -2,7 +2,7 @@
 	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderRegionName/@EntryValue">License Information (MIT)</s:String>
 	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">MIT License
 
-Copyright (c) 2021-${CurrentDate.Year} Analog Feelings
+Copyright (c) 2021 Analog Feelings
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
