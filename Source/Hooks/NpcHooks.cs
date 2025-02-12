@@ -72,7 +72,7 @@ namespace CharacterRadar.Hooks
 				color = ConfigLoader.Instance.CharacterColors[character];
 			}
 			
-			Singleton<BaseGameManager>.Instance.Ec.map.AddArrow(__instance.transform, color);
+			Singleton<BaseGameManager>.Instance.Ec.map.AddArrow(__instance.Navigator.Entity, color);
 		}
 	}
 }
